@@ -18,8 +18,8 @@
                         <tr ng-repeat="f in fruit" ng-class="{'danger':(fruitAndVeggies.length < 1 && f.type!='fruit')}">
                             <td>{{f.name}} - {{f.type}}</td>
                             <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="removeFruit($index)"><i class="glyphicon glyphicon-arrow-right"></i></button></td>
-                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
-                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,1)" ng-disabled="$index >= fruit.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>
+                            <td ng-show="partOneComplete && !partTwoComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
+                            <td ng-show="partOneComplete && !partTwoComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,1)" ng-disabled="$index >= fruit.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>
                         </tr>
                     </table>
                 </div>
@@ -42,8 +42,8 @@
                         <tr ng-repeat="v in veggies" ng-class="{'danger':(fruitAndVeggies.length < 1 && v.type!='vegetable')}">
                             <td>{{v.name}} - {{v.type}}</td>
                             <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="removeVegetable($index)"><i class="glyphicon glyphicon-arrow-left"></i></button></td>
-                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
-                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,1)" ng-disabled="$index >= veggies.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>                            
+                            <td ng-show="partOneComplete && !partTwoComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
+                            <td ng-show="partOneComplete && !partTwoComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,1)" ng-disabled="$index >= veggies.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>                            
                         </tr>
                     </table>
                 </div>                        

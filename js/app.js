@@ -10,6 +10,7 @@ fvApp.controller('FVListController',['$scope',function($scope){
     $scope.veggies=[];
     $scope.message={class:"",message:""}
     $scope.partOneComplete=false;
+    $scope.partTwoComplete=false;
 
     $scope.fruitAndVeggies = fruit.map(function(item){
         return {name:item,type:'fruit'}
@@ -43,6 +44,7 @@ fvApp.controller('FVListController',['$scope',function($scope){
         if(isSorted($scope.veggies) && isSorted($scope.fruit)){
             $scope.message.text="YAY!! You win!! You sorted all the fruits and veggies.";
             $scope.message.class="success";
+            $scope.partTwoComplete=true;
         }else{
             $scope.message.text="Not sorted yet... keep trying.";
             $scope.message.class="warning";
