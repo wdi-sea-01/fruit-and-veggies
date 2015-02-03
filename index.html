@@ -9,18 +9,43 @@
         <script src="js/fruit_and_veggies.js"></script>
         <script src="js/app.js"></script>
     </head>
-    <body>
+    <body ng-app="FruitAndVeggiesApp">
         <div class="container">
             <h1>Fruit and Veggies</h1>
-            <div class="row">
+            <div class="row" ng-controller="FVListController">
                 <div class="col-sm-4">
-                    col 1
+                    <table class="table">
+                        <tr ng-repeat="f in fruit" ng-class="{'danger':(fruitAndVeggies.length < 1 && f.type!='fruit')}">
+                            <td>{{f.name}} - {{f.type}}</td>
+                            <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="removeFruit($index)"><i class="glyphicon glyphicon-arrow-right"></i></button></td>
+                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
+                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(fruit,$index,1)" ng-disabled="$index >= fruit.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-sm-4">
-                    col 2
+                    <table class="table">
+                        <tr ng-if="fruitAndVeggies.length < 1">
+                            <td colspan="3" ng-class="message.class">
+                                {{message.text}}
+                            </td>
+                        </tr>
+                        <tr ng-repeat="fv in fruitAndVeggies">
+                            <td>{{fv.name}}</td>
+                            <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="addFruit($index)"><i class="glyphicon glyphicon-arrow-left"></i></button></td>
+                            <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="addVegetable($index)"><i class="glyphicon glyphicon-arrow-right"></i></button></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-sm-4">
-                    col 3
+                    <table class="table">
+                        <tr ng-repeat="v in veggies" ng-class="{'danger':(fruitAndVeggies.length < 1 && v.type!='vegetable')}">
+                            <td>{{v.name}} - {{v.type}}</td>
+                            <td ng-hide="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="removeVegetable($index)"><i class="glyphicon glyphicon-arrow-left"></i></button></td>
+                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,-1)" ng-disabled="$index == 0"><i class="glyphicon glyphicon-arrow-up"></i></button></td>
+                            <td ng-show="partOneComplete"><button class="btn btn-xs btn-primary" ng-click="move(veggies,$index,1)" ng-disabled="$index >= veggies.length-1"><i class="glyphicon glyphicon-arrow-down"></i></button></td>                            
+                        </tr>
+                    </table>
                 </div>                        
             </div>
         </div>
